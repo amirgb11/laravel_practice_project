@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Note;
 use App\Card;
+use Gate;
 
 class NotesController extends Controller
 {
@@ -33,6 +34,14 @@ class NotesController extends Controller
 
     public function edit(Note $note)
     {
+        //auth()->loginUsingId(1);
+        // auth()->logout();
+
+        // if(Gate::denies('edit-user' , $note)){
+        //     abort(404 , 'Sorry');
+        // }
+
+        //$this->authorize('edit-note' , $note);
         return view('notes.edit' , compact('note'));
     }
 
