@@ -9,14 +9,21 @@ use App\Card;
 
 class NotesController extends Controller
 {
-    public function store(Card $card)
+    public function store(Card $card , Request $req)
     {
         // return $req->all();
         // return request()->all();
 
-        $note = new Note;
-        $note->body = request()->body;
+        $this->validate($req , [
+            'body' => 'required|min:6'
+        ]);
+        $note = new Note($req->all());
+        $note->user_id = 1;
         $card->notes()->save($note);
+
+
+        // $note->body = request()->body;
+        // $card->notes()->save($note);
 
         // return redirect('URL');
         return back();
