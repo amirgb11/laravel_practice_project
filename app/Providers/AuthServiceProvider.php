@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Note' => 'App\Policies\NotePolicy',
     ];
 
     /**
@@ -26,9 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->define('edit-note' , function ($user , $note) {
-            return $user->id == $note->user_id;
-        });
+        // $gate->define('edit-note' , function ($user , $note) {
+        //     return $user->id == $note->user_id;
+        // });
 
         //
     }

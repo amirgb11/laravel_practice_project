@@ -34,14 +34,14 @@ class NotesController extends Controller
 
     public function edit(Note $note)
     {
-        //auth()->loginUsingId(1);
+        //\Auth::loginUsingId(1);
         // auth()->logout();
 
-        // if(Gate::denies('edit-user' , $note)){
+        // if(Gate::denies('update' , $note)){
         //     abort(404 , 'Sorry');
         // }
 
-        //$this->authorize('edit-note' , $note);
+        //$this->authorize('update' , $note);
         return view('notes.edit' , compact('note'));
     }
 
